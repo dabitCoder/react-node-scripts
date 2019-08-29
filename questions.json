@@ -1,0 +1,38 @@
+{
+  "components": [
+    {
+      "name": "type",
+      "type": "list",
+      "message": "Select the type of component do you want to create :",
+      "choices": ["Table", "Statefull", "Stateless"]
+    },
+    {
+      "name": "withRedux",
+      "type": "list",
+      "message": "Do you want to connect it to redux?",
+      "choices": ["Yes", "No"]
+    },
+    {
+      "name": "withTest",
+      "type": "list",
+      "message": "Do you want to include test?",
+      "choices": ["Yes", "No"]
+    }
+  ],
+  "tests": [
+    {
+      "name": "type",
+      "type": "list",
+      "message": "Select the type of test do you want to create :",
+      "choices": ["Component", "Reducer", "Action"]
+    }
+  ],
+  "connector": [
+    {
+      "name": "connectorType",
+      "type": "list",
+      "message": "Select the type of connector do you want to create :",
+      "choices": ["CRUD", "List"]
+    }
+  ]
+}
