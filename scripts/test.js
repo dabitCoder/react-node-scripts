@@ -1,8 +1,10 @@
 #!/usr/bin/env node
-const chalk = require("chalk");
-const clear = require("clear");
-const figlet = require("figlet");
-const inquirer = require("../lib/inquirer");
+import chalk from "chalk";
+import clear from "clear";
+import figlet from "figlet";
+import { askForTest, askForName } from "../lib/inquirer";
+
+import { getCurrentDirectoryBase, readFile } from "../lib/files";
 
 clear();
 console.log(
@@ -10,8 +12,21 @@ console.log(
 );
 
 const run = () => {
-  const response = inquirer.askForTest().then(answer => {
-    console.log(answer);
+  askForTest().then(selection => {
+    switch (selection.type) {
+      case "Component":
+        askForName().then(answer => {
+          const baseDir = getCurrentDirectoryBase();
+          readFile("templates/");
+        });
+        break;
+      case "Action":
+        askForName().then(answer => answer.name);
+        break;
+      case "Reducer":
+        askForName().then(answer => answer.name);
+        break;
+    }
   });
 };
 

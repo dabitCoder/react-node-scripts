@@ -1,9 +1,8 @@
 #!/usr/bin/env node
-const files = require("../lib/files");
-const chalk = require("chalk");
-const clear = require("clear");
-const figlet = require("figlet");
-const inquirer = require("../lib/inquirer");
+import chalk from "chalk";
+import clear from "clear";
+import figlet from "figlet";
+import inquirer from "inquirer";
 
 clear();
 console.log(
@@ -11,9 +10,7 @@ console.log(
 );
 
 const run = () => {
-  const response = inquirer.askForComponent().then(answer => {
-    console.log(answer);
-  });
+  const response = inquirer.askForComponent().then(answer => {});
 };
 
 run();

@@ -34,5 +34,12 @@
       "message": "Select the type of connector do you want to create :",
       "choices": ["CRUD", "List"]
     }
+  ],
+  "naming": [
+    {
+      "name": "name",
+      "type": "string",
+      "message": "Please, provide a name"
+    }
   ]
 }
