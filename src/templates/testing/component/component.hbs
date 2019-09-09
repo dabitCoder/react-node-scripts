@@ -1,0 +1,74 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+{{#if isReduxActive}}
+import { Provider } from 'react-redux';
+{{/if}}
+import { render {{#if isReduxActive}}, cleanup{{/if}} } from 'react-testing-library';
+
+{{#if isReduxActive}}
+import store from '../../../../store/__mocks__/mockStore';
+
+{{#if actionsForComponent}}
+import { {{{actionsForComponent}}} } from {{{actionsRoute}}};
+{{/if}}
+
+{{#if selectorsForComponent }}
+import { {{{selectorsForComponent}}} } from {{{selectorsRoute}}};
+{{/if}}
+{{/if}}
+
+import {{component_name}} from '../{{component_name}}';
+
+{{#if isReduxActive}}
+    {{#if actionsRoute}}
+jest.mock({{{actionsRoute}}});
+    {{/if}}
+    {{#if selectorsRoute}}
+jest.mock({{{selectorsRoute}}});
+    {{/if}}
+{{/if}}
+
+
+describe('{{component_name}} test suite', () => {
+{{#if isReduxActive}}
+const component = (
+<Provider store={store}>
+    <{{component_name}} />
+</Provider>
+);
+{{else}}
+const component =
+<{{component_name}} />
+{{/if}}
+
+const setup = () => render(component);
+
+{{#if isReduxActive}}
+beforeEach(() => {
+{{#each actionsArray}}
+{{this}}.mockReturnValue({
+type:'{{{this}}}'
+});
+{{/each}}
+{{#each selectorsArray}}
+{{this}}.mockReturnValue(null);
+{{/each}}
+});
+
+afterEach(() => {
+cleanup();
+jest.clearAllMocks();
+});
+{{/if}}
+
+it('Should render correctly', () => {
+const div = document.createElement('div');
+ReactDOM.render(component, div);
+ReactDOM.unmountComponentAtNode(div);
+});
+
+it('Should match snapshot', () => {
+const { container } = setup();
+expect(container).toMatchSnapshot();
+});
+});
