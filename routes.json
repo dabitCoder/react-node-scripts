@@ -1,0 +1,11 @@
+{
+  "tableComponent": {
+    "filters": "templates/components/table/tableFilters.jsx",
+    "filtersActions": "templates/components/table/tableFiltersActions.jsx",
+    "entryPoint": "templates/components/table/tableAll.jsx",
+    "table": "templates/components/table/table.jsx"
+  },
+  "tests": {
+    "component": "templates/test/componentTest.test.js"
+  }
+}

@@ -1,7 +1,7 @@
 import {} from "../../../../actions/actionTypes";
-import reducer from "../%REDUCER%";
+import reducer from "../NAME";
 
-describe("%REDUCER% test suite", () => {
+describe("NAME test suite", () => {
   it("Action: NAME_OF_THE_ACTION", () => {
     const action = {
       type: NAME_OF_THE_ACTION

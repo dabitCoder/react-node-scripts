@@ -4,7 +4,7 @@ import clear from "clear";
 import figlet from "figlet";
 import { askForTest, askForName } from "../lib/inquirer";
 
-import { readAndCreateFile } from "../lib/files";
+import { generateFromTemplate } from "../lib/files";
 
 clear();
 console.log(
@@ -20,22 +20,26 @@ const run = () => {
         route = "templates/test/componentTest.test.js";
         extension = "test.jsx";
         askForName().then(answer =>
-          readAndCreateFile(route, answer.name, extension)
+          generateFromTemplate(route, answer.name, extension)
         );
         break;
       case "Action":
         route = "templates/test/action.test.js";
         askForName().then(answer =>
-          readAndCreateFile(route, answer.name, extension)
+          generateFromTemplate(route, answer.name, extension)
         );
         break;
       case "Reducer":
         route = "templates/test/reducer.test.js";
         askForName().then(answer =>
-          readAndCreateFile(route, answer.name, extension)
+          generateFromTemplate(route, answer.name, extension)
         );
-
         break;
+      default:
+        route = "templates/test/componentTest.test.js";
+        askForName().then(answer =>
+          generateFromTemplate(route, answer.name, extension)
+        );
     }
   });
 };

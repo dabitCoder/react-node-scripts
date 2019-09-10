@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { render, cleanup, fireEvent } from "react-testing-library";
-import COMPONENT_NAME from "../COMPONENT_NAME";
+import NAME from "../NAME";
 import store from "../../../../store/__mocks__/mockStore";
 
-describe("%COMPONENT_NAME% test suite", () => {
+describe("NAME test suite", () => {
   const component = (
     <Provider store={store}>
-      <COMPONENT_NAME />
+      <NAME />
     </Provider>
   );
 
