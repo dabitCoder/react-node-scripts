@@ -1,9 +1,9 @@
 //Place here your imports (connectors, helpers...)
 
 import {} from "../../../actionTypes";
-import {} from "../$ACTION";
+import {} from "../NAME";
 
-describe("$ACTION test suite", () => {
+describe("NAME test suite", () => {
   it("", () => {
     const payload = "payload";
     const actual = {

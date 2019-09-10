@@ -4,7 +4,7 @@ import clear from "clear";
 import figlet from "figlet";
 import { askForTest, askForName } from "../lib/inquirer";
 
-import { getCurrentDirectoryBase, readFile } from "../lib/files";
+import { readAndCreateFile } from "../lib/files";
 
 clear();
 console.log(
@@ -13,18 +13,28 @@ console.log(
 
 const run = () => {
   askForTest().then(selection => {
+    let route;
+    let extension = "test.js";
     switch (selection.type) {
       case "Component":
-        askForName().then(answer => {
-          const baseDir = getCurrentDirectoryBase();
-          readFile("templates/");
-        });
+        route = "templates/test/componentTest.test.js";
+        extension = "test.jsx";
+        askForName().then(answer =>
+          readAndCreateFile(route, answer.name, extension)
+        );
         break;
       case "Action":
-        askForName().then(answer => answer.name);
+        route = "templates/test/action.test.js";
+        askForName().then(answer =>
+          readAndCreateFile(route, answer.name, extension)
+        );
         break;
       case "Reducer":
-        askForName().then(answer => answer.name);
+        route = "templates/test/reducer.test.js";
+        askForName().then(answer =>
+          readAndCreateFile(route, answer.name, extension)
+        );
+
         break;
     }
   });
