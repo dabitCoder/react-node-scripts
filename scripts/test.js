@@ -6,6 +6,8 @@ import { askForTest, askForName } from "../lib/inquirer";
 
 import { generateFromTemplate } from "../lib/files";
 
+import { tests } from "../routes.json";
+
 clear();
 console.log(
   chalk.red(figlet.textSync("RED POINTS", { horizontalLayout: "full" }))
@@ -17,29 +19,26 @@ const run = () => {
     let extension = "test.js";
     switch (selection.type) {
       case "Component":
-        route = "templates/test/componentTest.test.js";
+        route = tests.component;
         extension = "test.jsx";
         askForName().then(answer =>
           generateFromTemplate(route, answer.name, extension)
         );
         break;
       case "Action":
-        route = "templates/test/action.test.js";
+        route = tests.action;
         askForName().then(answer =>
           generateFromTemplate(route, answer.name, extension)
         );
         break;
       case "Reducer":
-        route = "templates/test/reducer.test.js";
+        route = tests.reducer;
         askForName().then(answer =>
           generateFromTemplate(route, answer.name, extension)
         );
         break;
       default:
-        route = "templates/test/componentTest.test.js";
-        askForName().then(answer =>
-          generateFromTemplate(route, answer.name, extension)
-        );
+        return;
     }
   });
 };

@@ -6,6 +6,8 @@
     "table": "templates/components/table/table.jsx"
   },
   "tests": {
-    "component": "templates/test/componentTest.test.js"
+    "component": "templates/test/componentTest.test.jsx",
+    "action": "templates/test/action.test.js",
+    "reducer": "templates/test/reducer.test.js"
   }
 }

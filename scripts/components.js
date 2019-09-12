@@ -4,7 +4,11 @@ import clear from "clear";
 import figlet from "figlet";
 
 import { askForComponent, askForName } from "../lib/inquirer";
-import { createDir, generateFromTemplate } from "../lib/files";
+import {
+  createDir,
+  generateFromTemplate,
+  createTableComponentTest
+} from "../lib/files";
 import { tableComponent, tests } from "../routes.json";
 
 clear();
@@ -18,6 +22,32 @@ const run = () => {
       case "Table":
         askForName().then(answer => {
           const { filters, filtersActions, entryPoint, table } = tableComponent;
+          const items = [
+            {
+              route: tests.component,
+              name: `${answer.name}All`,
+              extension: "test.jsx",
+              parentDir: `${answer.name}/__tests__`
+            },
+            {
+              route: tests.component,
+              name: `${answer.name}Filters`,
+              extension: "test.jsx",
+              parentDir: `${answer.name}/__tests__`
+            },
+            {
+              route: tests.component,
+              name: `${answer.name}FiltersActions`,
+              extension: "test.jsx",
+              parentDir: `${answer.name}/__tests__`
+            },
+            {
+              route: tests.component,
+              name: `${answer.name}Table`,
+              extension: "test.jsx",
+              parentDir: `${answer.name}/__tests__`
+            }
+          ];
           createDir(answer.name, () => {
             generateFromTemplate(
               entryPoint,
@@ -45,14 +75,7 @@ const run = () => {
             );
 
             //Create tests
-            createDir("__tests__", () => {
-              generateFromTemplate(
-                `../${tests.component}`,
-                answer.name,
-                "jsx",
-                answer.name
-              );
-            });
+            createTableComponentTest(answer.name, items);
           });
         });
     }
