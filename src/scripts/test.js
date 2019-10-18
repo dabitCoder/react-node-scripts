@@ -2,9 +2,9 @@
 import chalk from "chalk";
 import clear from "clear";
 import figlet from "figlet";
-import { askForTest, askForName } from "../lib/inquirer";
+import { askForTest, askForName } from "../../lib/inquirer";
 
-import { generateFromTemplate } from "../lib/files";
+import { generateFromTemplate } from "../../lib/files";
 
 import { tests } from "../routes.json";
 

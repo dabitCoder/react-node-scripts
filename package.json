@@ -2,15 +2,23 @@
   "name": "react-node-scripts",
   "version": "1.0.0",
   "description": "A command line tool to create react components or utilities ",
-  "main": "index.js",
   "repository": "https://github.com/dabitCoder/react-node-scripts.git",
   "author": "<doliva@redpoints.com>",
   "license": "MIT",
+  "main": "src/index.js",
+  "bin": {
+    "generate": "./src/index"
+  },
   "scripts": {
     "components": "babel-node ./scripts/components.js",
     "test": "babel-node ./scripts/test.js",
-    "connector": "babel-node ./scripts/connector.js"
+    "connector": "babel-node ./scripts/connector.js",
+    "build": "rm -rf ./dist && cp -r ./src/index.js dist"
   },
+  "keywords": [
+    "cli",
+    "create-project"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.5.5",
