@@ -1,18 +1,25 @@
 {
-  "components": [
+  "selection": [
     {
       "name": "type",
       "type": "list",
-      "message": "Select the type of component do you want to create :",
-      "choices": ["Table", "Statefull", "Stateless"]
+      "message": "What do you want to create?:",
+      "choices": ["Test for a component", "Connector"]
     }
   ],
-  "tests": [
+
+  "reducers": [
     {
-      "name": "type",
-      "type": "list",
-      "message": "Select the type of test do you want to create :",
-      "choices": ["Component", "Reducer", "Action"]
+      "name": "route",
+      "type": "string",
+      "message": "Route of your reducer"
+    }
+  ],
+  "actions": [
+    {
+      "name": "route",
+      "type": "string",
+      "message": "Route of your actions"
     }
   ],
   "connector": [
