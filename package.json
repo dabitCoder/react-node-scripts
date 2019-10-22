@@ -7,11 +7,10 @@
   "license": "MIT",
   "main": "./src/index.js",
   "bin": {
-    "generate": "./src/index"
+    "call-generator": "./bin/call-generator.js"
   },
   "scripts": {
-    "prompt": "babel-node ./src/index.js",
-    "build": "rm -rf ./dist && cp -r ./src/index.js dist"
+    "prompt": "babel-node ./src/index.js"
   },
   "keywords": [
     "cli",
@@ -22,10 +21,12 @@
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.6.2",
     "@octokit/rest": "^16.28.7",
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
     "configstore": "^5.0.0",
+    "esm": "^3.2.25",
     "figlet": "^1.2.3",
     "inquirer": "^7.0.0",
     "lodash": "^4.17.15",

@@ -1,9 +1,5 @@
 import { askForName, askForReducers, askForActions } from '../../lib/inquirer';
-import {
-  createDir,
-  generateTestFromTemplate,
-  getCurrentDirectoryBase
-} from '../../lib/files';
+import { createDir, generateTestFromTemplate } from '../../lib/files';
 
 import routes from '../routes.js';
 
