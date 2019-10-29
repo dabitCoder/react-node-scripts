@@ -10,14 +10,14 @@
 
   "reducers": [
     {
-      "name": "route",
+      "name": "reducers",
       "type": "string",
       "message": "Route of your reducer"
     }
   ],
   "actions": [
     {
-      "name": "route",
+      "name": "actions",
       "type": "string",
       "message": "Route of your actions"
     }

@@ -1,34 +1,29 @@
-import { askForName, askForReducers, askForActions } from '../../lib/inquirer';
-import { createDir, generateTestFromTemplate } from '../../lib/files';
+import { askForName, askForReducers, askForActions } from "../../lib/inquirer";
+import { createDir, generateTestFromTemplate } from "../../lib/files";
 
-import routes from '../routes.js';
+import routes from "../routes.js";
 
 export const generateComponentTest = async () => {
   const { componentTestRoute } = routes;
-  let name, actions, reducers;
 
-  await askForName().then(answer => {
-    name = answer.name;
-  });
+  const { name } = await askForName();
+  const { reducers } = await askForReducers();
+  const { actions } = await askForActions();
 
-  await askForReducers().then(answer => {
-    reducers = answer.route;
-  });
-
-  await askForActions().then(answer => {
-    actions = answer.route;
-  });
+  const reducersActions = { reducers, actions };
 
   if (name && reducers && actions) {
-    const routes = { reducers, actions };
     const parentDir = name;
 
     createDir(name, () => {
-      generateTestFromTemplate(componentTestRoute, name, routes, parentDir);
+      generateTestFromTemplate(
+        componentTestRoute,
+        name,
+        reducersActions,
+        parentDir
+      );
     });
   } else {
-    console.log('Something wrong happen. Maybe you forgot to add some value? ');
+    console.log("Something wrong happen. Maybe you forgot to add some value? ");
   }
 };
-
-export default generateComponentTest;

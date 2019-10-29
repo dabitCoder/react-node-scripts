@@ -1,14 +1,9 @@
-#!/usr/bin/env node
-import chalk from 'chalk';
-import clear from 'clear';
-import figlet from 'figlet';
-import { askForConnector } from 'inquirer';
+import { askForName } from "../../lib/inquirer";
+import { generateTestFromTemplate } from "../../lib/files";
 
-clear();
-console.log(
-  chalk.red(figlet.textSync('RED POINTS', { horizontalLayout: 'full' }))
-);
+import routes from "../routes.js";
 
-const run = () => askForConnector();
-
-run();
+export const generateConnectorTest = async () => {
+  const { connectorReadOnlyTestRoute } = routes;
+  const name = await askForName();
+};
