@@ -22,12 +22,18 @@
       "message": "Route of your actions"
     }
   ],
-  "connector": [
+  "parameters": [
     {
-      "name": "connectorType",
-      "type": "list",
-      "message": "Select the type of connector do you want to create :",
-      "choices": ["CRUD", "List"]
+      "name": "parameters",
+      "type": "array",
+      "message": "Parameters for your connector test (context, full...)"
+    }
+  ],
+  "methodName": [
+    {
+      "name": "methodName",
+      "type": "string",
+      "message": "Method you wanna test"
     }
   ],
   "naming": [

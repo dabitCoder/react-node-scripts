@@ -1,5 +1,5 @@
 import { askForName, askForReducers, askForActions } from "../../lib/inquirer";
-import { createDir, generateTestFromTemplate } from "../../lib/files";
+import { createDir, generateComponentTestFromTemplate } from "../../lib/files";
 
 import routes from "../routes.js";
 
@@ -16,7 +16,7 @@ export const generateComponentTest = async () => {
     const parentDir = name;
 
     createDir(name, () => {
-      generateTestFromTemplate(
+      generateComponentTestFromTemplate(
         componentTestRoute,
         name,
         reducersActions,
