@@ -1,7 +1,7 @@
-import { askForName, askForReducers, askForActions } from "../../lib/inquirer";
-import { createDir, generateComponentTestFromTemplate } from "../../lib/files";
+import { askForName, askForReducers, askForActions } from '../../lib/inquirer';
+import { createDir, generateComponentTestFromTemplate } from '../../lib/files';
 
-import routes from "../routes.js";
+import routes from '../routes.js';
 
 export const generateComponentTest = async () => {
   const { componentTestRoute } = routes;
@@ -15,15 +15,12 @@ export const generateComponentTest = async () => {
   if (name && reducers && actions) {
     const parentDir = name;
 
-    createDir(name, () => {
-      generateComponentTestFromTemplate(
-        componentTestRoute,
-        name,
-        reducersActions,
-        parentDir
-      );
-    });
+    generateComponentTestFromTemplate(
+      componentTestRoute,
+      name,
+      reducersActions
+    );
   } else {
-    console.log("Something wrong happen. Maybe you forgot to add some value? ");
+    console.log('Something wrong happen. Maybe you forgot to add some value? ');
   }
 };
