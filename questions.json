@@ -4,10 +4,9 @@
       "name": "type",
       "type": "list",
       "message": "What do you want to create?:",
-      "choices": ["Test for a component", "Connector"]
+      "choices": ["Test for a component", "Test for a connector"]
     }
   ],
-
   "reducers": [
     {
       "name": "reducers",

@@ -3,7 +3,7 @@ import {
   askForParameters,
   askForConnectorMethod,
 } from '../../lib/inquirer';
-import { createDir, generateConnectorTestFromTemplate } from '../../lib/files';
+import { generateConnectorTestFromTemplate } from '../../lib/files';
 
 import routes from '../routes.js';
 
@@ -14,13 +14,11 @@ export const generateConnectorTest = async () => {
   let { parameters } = await askForParameters();
 
   parameters = parameters.split(',');
-  const parentDir = name;
 
   generateConnectorTestFromTemplate(
     connectorReadOnlyTestRoute,
     name,
     methodName,
-    parameters,
-    parentDir
+    parameters
   );
 };

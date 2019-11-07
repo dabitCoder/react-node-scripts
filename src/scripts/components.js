@@ -1,5 +1,9 @@
+/**
+ * David Oliva Tirado - 2019
+ */
+
 import { askForName, askForReducers, askForActions } from '../../lib/inquirer';
-import { createDir, generateComponentTestFromTemplate } from '../../lib/files';
+import { generateComponentTestFromTemplate } from '../../lib/files';
 
 import routes from '../routes.js';
 
@@ -13,8 +17,6 @@ export const generateComponentTest = async () => {
   const reducersActions = { reducers, actions };
 
   if (name && reducers && actions) {
-    const parentDir = name;
-
     generateComponentTestFromTemplate(
       componentTestRoute,
       name,
