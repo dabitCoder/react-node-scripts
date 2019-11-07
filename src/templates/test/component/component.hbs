@@ -1,0 +1,44 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+{{#if isReduxActive}}
+import { Provider } from 'react-redux';
+{{/if}}
+import { render, cleanup, fireEvent } from 'react-testing-library';
+{{#if isReduxActive}}
+   import store from '../../../../store/__mocks__/mockStore';
+
+   import {} from '{{actions}}';
+   import {} from '{{reducers}}';
+{{/if}}
+
+import {{name}} from '../{{name}}';
+
+describe('{{name}} test suite', () => {
+  {{#if isReduxActive}}
+      const component = (
+        <Provider store={store}>
+          <{{name}}/>
+        </Provider>
+      );
+  {{else}}
+    const component = <{{name}}/>
+  {{/if}}
+
+  const setup = () => render(component);
+
+  {{#if isReduxActive}}
+    beforeEach(() => {});
+    afterEach(cleanup);
+  {{/if}}
+
+it('Should render correctly', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(component, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('Should match snapshot', () => {
+    const { container } = setup();
+    expect(container).toMatchSnapshot();
+  });
+});

@@ -14,6 +14,13 @@
       "message": "Route of your reducer"
     }
   ],
+  "redux": [
+    {
+      "name": "isReduxActive",
+      "type": "confirm",
+      "message": "Do you use redux?"
+    }
+  ],
   "actions": [
     {
       "name": "actions",

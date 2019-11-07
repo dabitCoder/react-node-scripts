@@ -11,7 +11,7 @@ import UserTestData from '../testData/UserTestData';
 
 chai.use(chaiExclude);
 
-describe('NAME_OF_YOUR_CONNECTOR', () => {
+describe('{{connector_name}}', () => {
   let context;
 
   beforeEach(async () => {
@@ -24,11 +24,11 @@ describe('NAME_OF_YOUR_CONNECTOR', () => {
     context.contractId = ContractTestData.CONTRACT_ID_1;
   });
 
-  describe('NAME_OF_YOUR_CONNECTOR.METHOD_OF_YOUR_CONNECTOR', () => {
+  describe('{{connector_name}}.{{connector_method}}', () => {
     it('should fail and get a 401 - Invalid Credentials', async () => {
       context.userToken = null;
-      const actual = await NAME_OF_YOUR_CONNECTOR.METHOD_OF_YOUR_CONNECTOR(
-        PARAMETERS
+      const actual = await {{connector_name}}.{{connector_method}}(
+        {{method_parameters}}
       );
 
       expect(actual).to.not.be.null;
@@ -40,8 +40,8 @@ describe('NAME_OF_YOUR_CONNECTOR', () => {
       context.userToken = await AuthenticationHelper.getUserToken(
         UserTestData.UTF8_USER
       );
-      const actual = await NAME_OF_YOUR_CONNECTOR.METHOD_OF_YOUR_CONNECTOR(
-        PARAMETERS
+      const actual = await {{connector_name}}.{{connector_method}}(
+        {{method_parameters}}
       );
 
       expect(actual).to.not.be.null;
@@ -51,8 +51,8 @@ describe('NAME_OF_YOUR_CONNECTOR', () => {
 
     it('should fail drastically and handle error', async () => {
       context.environment = CommonTestData.INVALID_ENVIRONMENT;
-      const actual = await NAME_OF_YOUR_CONNECTOR.METHOD_OF_YOUR_CONNECTOR(
-        PARAMETERS
+      const actual = await {{connector_name}}.{{connector_method}}(
+        {{method_parameters}}
       );
 
       expect(actual).to.not.be.null;

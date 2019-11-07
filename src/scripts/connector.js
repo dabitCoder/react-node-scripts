@@ -15,10 +15,11 @@ export const generateConnectorTest = async () => {
 
   parameters = parameters.split(',');
 
-  generateConnectorTestFromTemplate(
-    connectorReadOnlyTestRoute,
-    name,
-    methodName,
-    parameters
-  );
+  const dataObject = {
+    connector_name: name,
+    connector_method: methodName,
+    method_parameters: parameters,
+  };
+
+  generateConnectorTestFromTemplate(connectorReadOnlyTestRoute, dataObject);
 };

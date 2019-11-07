@@ -12,17 +12,16 @@ console.log(
   chalk.red(figlet.textSync('RED POINTS', { horizontalLayout: 'full' }))
 );
 
-const run = () => {
-  askForSelection().then(answer => {
-    switch (answer.type) {
-      case 'Test for a component':
-        generateComponentTest();
-        break;
-      case 'Test for a connecor':
-        generateConnectorTest();
-        break;
-    }
-  });
+const run = async () => {
+  const { type } = await askForSelection();
+  switch (type) {
+    case 'Test for a component':
+      await generateComponentTest();
+      break;
+    case 'Test for a connector':
+      await generateConnectorTest();
+      break;
+  }
 };
 
 run();
