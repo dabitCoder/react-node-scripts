@@ -7,46 +7,54 @@
       "choices": ["Test for a component", "Test for a connector"]
     }
   ],
-  "reducers": [
+  "naming": [
     {
-      "name": "reducers",
+      "name": "name",
+      "type": "string",
+      "message": "Please, provide a name"
+    }
+  ],
+  "component_reducers": [
+    {
+      "name": "component_reducers",
       "type": "string",
       "message": "Route of your reducer"
     }
   ],
-  "redux": [
+  "isReduxActive": [
     {
       "name": "isReduxActive",
       "type": "confirm",
       "message": "Do you use redux?"
     }
   ],
-  "actions": [
+  "component_actions": [
     {
-      "name": "actions",
+      "name": "component_actions",
       "type": "string",
       "message": "Route of your actions"
     }
   ],
-  "parameters": [
+  "connector_method_parameters": [
     {
-      "name": "parameters",
+      "name": "connector_method_parameters",
       "type": "array",
       "message": "Parameters for your connector test (context, full...)"
     }
   ],
-  "methodName": [
+  "connector_method": [
     {
-      "name": "methodName",
+      "name": "connector_method",
       "type": "string",
       "message": "Method you wanna test"
     }
   ],
-  "naming": [
+  "connector_test_type": [
     {
-      "name": "name",
-      "type": "string",
-      "message": "Please, provide a name"
+      "name": "connector_test_type",
+      "type": "list",
+      "message": "Which kind of test do you wish?",
+      "choices": ["SpecReadOnly.js", "Spec.js"]
     }
   ]
 }

@@ -28,7 +28,7 @@ describe('{{connector_name}}', () => {
     it('should fail and get a 401 - Invalid Credentials', async () => {
       context.userToken = null;
       const actual = await {{connector_name}}.{{connector_method}}(
-        {{method_parameters}}
+        {{connector_method_parameters}}
       );
 
       expect(actual).to.not.be.null;
@@ -41,7 +41,7 @@ describe('{{connector_name}}', () => {
         UserTestData.UTF8_USER
       );
       const actual = await {{connector_name}}.{{connector_method}}(
-        {{method_parameters}}
+        {{connector_method_parameters}}
       );
 
       expect(actual).to.not.be.null;
@@ -52,7 +52,7 @@ describe('{{connector_name}}', () => {
     it('should fail drastically and handle error', async () => {
       context.environment = CommonTestData.INVALID_ENVIRONMENT;
       const actual = await {{connector_name}}.{{connector_method}}(
-        {{method_parameters}}
+        {{connector_method_parameters}}
       );
 
       expect(actual).to.not.be.null;
