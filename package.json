@@ -27,6 +27,7 @@
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
+    "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.6.2",
     "@octokit/rest": "^16.28.7",

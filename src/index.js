@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import clear from 'clear';
 import figlet from 'figlet';
 
-import { askForSelection } from '../lib/inquirer';
+import { askForSelection } from '../lib/prompter';
 import { promptQuestionsForComponent } from './scripts/components';
 import { promptQuestionsForConnector } from './scripts/connector';
 

@@ -3,7 +3,7 @@ import {
   askForParameters,
   askForConnectorMethod,
   askForConnectorTestType,
-} from '../../lib/inquirer';
+} from '../../lib/prompter';
 import { generateConnectorTestFromTemplate } from '../../lib/templateCompiler';
 
 import routes from '../routes.js';

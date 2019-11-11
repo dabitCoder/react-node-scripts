@@ -7,7 +7,7 @@ import {
   askForReducers,
   askForActions,
   askForRedux,
-} from '../../lib/inquirer';
+} from '../../lib/prompter';
 import { generateComponentTestFromTemplate } from '../../lib/templateCompiler';
 
 import routes from '../routes.js';
