@@ -8,7 +8,7 @@ import { generateConnectorTestFromTemplate } from '../../lib/templateCompiler';
 
 import routes from '../routes.js';
 
-export const generateConnectorTest = async () => {
+export const promptQuestionsForConnector = async () => {
   const { connectorReadOnlyTestRoute } = routes;
   const { name } = await askForName();
   const { connector_method } = await askForConnectorMethod();

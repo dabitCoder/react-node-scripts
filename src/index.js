@@ -4,8 +4,8 @@ import clear from 'clear';
 import figlet from 'figlet';
 
 import { askForSelection } from '../lib/inquirer';
-import { generateComponentTest } from './scripts/components';
-import { generateConnectorTest } from './scripts/connector';
+import { promptQuestionsForComponent } from './scripts/components';
+import { promptQuestionsForConnector } from './scripts/connector';
 
 clear();
 console.log(
@@ -16,10 +16,10 @@ const run = async () => {
   const { type } = await askForSelection();
   switch (type) {
     case 'Test for a component':
-      await generateComponentTest();
+      await promptQuestionsForComponent();
       break;
     case 'Test for a connector':
-      await generateConnectorTest();
+      await promptQuestionsForConnector();
       break;
   }
 };

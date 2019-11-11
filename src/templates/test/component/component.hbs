@@ -5,13 +5,20 @@ import { Provider } from 'react-redux';
 {{/if}}
 import { render, cleanup, fireEvent } from 'react-testing-library';
 {{#if isReduxActive}}
-   import store from '../../../../store/__mocks__/mockStore';
+import store from '../../../../store/__mocks__/mockStore';
 
-   import {} from '{{component_actions}}';
-   import {} from '{{component_reducers}}';
+
+import {} from '{{component_actions}}';
+import {} from '{{component_reducers}}';
 {{/if}}
 
 import {{name}} from '../{{name}}';
+
+{{#if isReduxActive}}
+jest.mock('{{component_actions}}')
+jest.mock('{{component_reducers}}')
+{{/if}}
+
 
 describe('{{name}} test suite', () => {
   {{#if isReduxActive}}
