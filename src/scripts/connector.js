@@ -1,3 +1,6 @@
+import path from 'path'
+import {JavaClassFileReader} from 'java-class-tools'
+
 import {
   askForName,
   askForParameters,
@@ -6,9 +9,10 @@ import {
 } from '../../lib/prompter';
 import { generateConnectorTestFromTemplate } from '../../lib/templateCompiler';
 
+
 import routes from '../routes.js';
 
-export const promptQuestionsForConnector = async () => {
+export const promptQuestionsForConnectorTest = async () => {
   const { connectorReadOnlyTestRoute } = routes;
   const { name } = await askForName();
   const { connector_method } = await askForConnectorMethod();
@@ -23,4 +27,17 @@ export const promptQuestionsForConnector = async () => {
   };
 
   generateConnectorTestFromTemplate(connectorReadOnlyTestRoute, dataObject);
+};
+
+
+export const generateNewConnector = () => {
+  const reader = new JavaClassFileReader();
+  const fileToRead = path.join(__dirname, '../javaFiles/AssetController.class');
+  const classFile = reader.read(fileToRead);
+
+  classFile.methods.forEach(md => {
+    const nameInConstantPool = classFile.constant_pool[md.name_index];
+    const name = String.fromCharCode.apply(null, nameInConstantPool.bytes);
+    console.log(name)
+  });
 };

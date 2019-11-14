@@ -5,7 +5,7 @@ import figlet from 'figlet';
 
 import { askForSelection } from '../lib/prompter';
 import { promptQuestionsForComponent } from './scripts/components';
-import { promptQuestionsForConnector } from './scripts/connector';
+import { promptQuestionsForConnectorTest, generateNewConnector } from './scripts/connector';
 
 clear();
 console.log(
@@ -19,7 +19,13 @@ const run = async () => {
       await promptQuestionsForComponent();
       break;
     case 'Test for a connector':
-      await promptQuestionsForConnector();
+      await promptQuestionsForConnectorTest();
+      break;
+
+    case 'New connector':
+      generateNewConnector();
+      break;
+    default:
       break;
   }
 };
