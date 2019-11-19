@@ -58,6 +58,7 @@ export const generateNewConnector = async () => {
           if (paramString === 'scope') {
             paramString = 'context';
           }
+
           return paramString;
         });
         connectorData.push({ methodName, methodParams });

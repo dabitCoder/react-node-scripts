@@ -7,7 +7,15 @@ import UrlBuilder from '../helper/UrlBuilder';
 
 export default class {{connector_name}} extends BaseController {
 {{#each connectorData}}
-static async {{this.methodName}}({{this.methodParams}}) {
+/**
+{{#each this.methodParams}}
+* @param {{this}}
+{{/each}}
+*/
+static async {{this.methodName}}({{this.methodParams}})
+{
+const pathVariables = new Map();
+const queryParams = new Map();
 
 
 
@@ -17,8 +25,8 @@ context,
 todo,
 pathVariables,
 queryParams,
-todo,
-todo,
+HttpMethods,
+HttpStatus,
 todo,
 body
 )
