@@ -32,10 +32,23 @@ export const generateNewConnector = () => {
   const reader = new JavaClassFileReader();
   const fileToRead = path.join(__dirname, '../javaFiles/AssetController.class');
   const classFile = reader.read(fileToRead);
+  let methodObject = [];
+  let name;
+  let params;
 
-  classFile.methods.forEach(md => {
-    const nameInConstantPool = classFile.constant_pool[md.name_index];
-    const name = String.fromCharCode.apply(null, nameInConstantPool.bytes);
-    console.log(name);
+  classFile.methods.forEach(method => {
+    const nameInConstantPool = classFile.constant_pool[method.name_index];
+    name = String.fromCharCode.apply(null, nameInConstantPool.bytes);
+
+    method.attributes.map(methodAttr => {
+      const { parameters } = methodAttr;
+      if (parameters) {
+        params = parameters.map(param => {
+          const paramName = classFile.constant_pool[param.name_index];
+          return String.fromCharCode.apply(null, paramName.bytes);
+        });
+        methodObject.push({ name, params });
+      }
+    });
   });
 };

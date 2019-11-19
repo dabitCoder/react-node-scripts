@@ -8,7 +8,7 @@
   "main": "./src/index.js",
   "preferGlobal": true,
   "bin": {
-    "call-generator": "./lib/commands.js"
+    "call-generator": "./bin/call-generator.js"
   },
   "scripts": {
     "prompt": "babel-node ./src/index.js",

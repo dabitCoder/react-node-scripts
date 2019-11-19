@@ -9,8 +9,8 @@ const routes = {
     __dirname,
     '/templates/test/connector/connector.hbs'
   ),
-  testComponentDir: path.join(__dirname, '/'),
-  testConnectorDir: 'src/generatedFiles/connectors',
+  testComponentDir: process.cwd(),
+  testConnectorDir: process.cwd(),
 };
 
 export default routes;
