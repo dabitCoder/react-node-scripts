@@ -1,5 +1,5 @@
-import path from 'path'
-import {JavaClassFileReader} from 'java-class-tools'
+import path from 'path';
+import { JavaClassFileReader } from 'java-class-tools';
 
 import {
   askForName,
@@ -8,7 +8,6 @@ import {
   askForConnectorTestType,
 } from '../../lib/prompter';
 import { generateConnectorTestFromTemplate } from '../../lib/templateCompiler';
-
 
 import routes from '../routes.js';
 
@@ -29,7 +28,6 @@ export const promptQuestionsForConnectorTest = async () => {
   generateConnectorTestFromTemplate(connectorReadOnlyTestRoute, dataObject);
 };
 
-
 export const generateNewConnector = () => {
   const reader = new JavaClassFileReader();
   const fileToRead = path.join(__dirname, '../javaFiles/AssetController.class');
@@ -38,6 +36,6 @@ export const generateNewConnector = () => {
   classFile.methods.forEach(md => {
     const nameInConstantPool = classFile.constant_pool[md.name_index];
     const name = String.fromCharCode.apply(null, nameInConstantPool.bytes);
-    console.log(name)
+    console.log(name);
   });
 };

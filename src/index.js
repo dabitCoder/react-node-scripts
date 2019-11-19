@@ -5,14 +5,17 @@ import figlet from 'figlet';
 
 import { askForSelection } from '../lib/prompter';
 import { promptQuestionsForComponent } from './scripts/components';
-import { promptQuestionsForConnectorTest, generateNewConnector } from './scripts/connector';
+import {
+  promptQuestionsForConnectorTest,
+  generateNewConnector,
+} from './scripts/connector';
 
 clear();
 console.log(
   chalk.red(figlet.textSync('RED POINTS', { horizontalLayout: 'full' }))
 );
 
-const run = async () => {
+export const run = async () => {
   const { type } = await askForSelection();
   switch (type) {
     case 'Test for a component':

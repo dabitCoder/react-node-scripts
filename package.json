@@ -6,11 +6,13 @@
   "author": "<doliva@redpoints.com>",
   "license": "MIT",
   "main": "./src/index.js",
+  "preferGlobal": true,
   "bin": {
-    "call-generator": "./bin/call-generator.js"
+    "call-generator": "./lib/commands.js"
   },
   "scripts": {
     "prompt": "babel-node ./src/index.js",
+    "commands": "babel-node ./lib/commands.js",
     "test": "jest"
   },
   "keywords": [
@@ -33,6 +35,7 @@
     "@octokit/rest": "^16.28.7",
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
+    "commander": "^4.0.1",
     "configstore": "^5.0.0",
     "esm": "^3.2.25",
     "figlet": "^1.2.3",
