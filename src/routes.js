@@ -7,10 +7,15 @@ const routes = {
   ),
   connectorReadOnlyTestRoute: path.join(
     __dirname,
-    '/templates/test/connector/connector.hbs'
+    '/templates/test/connector/connectorTest.hbs'
+  ),
+  newConnectorRoute: path.join(
+    __dirname,
+    '/templates/connector/newConnector.hbs'
   ),
   testComponentDir: process.cwd(),
   testConnectorDir: process.cwd(),
+  newConnectorDir: process.cwd(),
 };
 
 export default routes;

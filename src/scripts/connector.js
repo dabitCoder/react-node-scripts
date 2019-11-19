@@ -7,7 +7,11 @@ import {
   askForConnectorMethod,
   askForConnectorTestType,
 } from '../../lib/prompter';
-import { generateConnectorTestFromTemplate } from '../../lib/templateCompiler';
+
+import {
+  generateConnectorTestFromTemplate,
+  generateNewConnectorFromTemplate,
+} from '../../lib/templateCompiler';
 
 import routes from '../routes.js';
 
@@ -28,27 +32,43 @@ export const promptQuestionsForConnectorTest = async () => {
   generateConnectorTestFromTemplate(connectorReadOnlyTestRoute, dataObject);
 };
 
-export const generateNewConnector = () => {
+export const generateNewConnector = async () => {
+  const { newConnectorRoute } = routes;
+  const { name } = await askForName();
+
   const reader = new JavaClassFileReader();
   const fileToRead = path.join(__dirname, '../javaFiles/AssetController.class');
   const classFile = reader.read(fileToRead);
-  let methodObject = [];
-  let name;
-  let params;
+  let connectorData = [];
+  let methodName;
+  let methodParams;
 
   classFile.methods.forEach(method => {
     const nameInConstantPool = classFile.constant_pool[method.name_index];
-    name = String.fromCharCode.apply(null, nameInConstantPool.bytes);
+    methodName = String.fromCharCode.apply(null, nameInConstantPool.bytes);
 
     method.attributes.map(methodAttr => {
       const { parameters } = methodAttr;
       if (parameters) {
-        params = parameters.map(param => {
+        methodParams = parameters.map(param => {
           const paramName = classFile.constant_pool[param.name_index];
-          return String.fromCharCode.apply(null, paramName.bytes);
+          let paramString = String.fromCharCode.apply(null, paramName.bytes);
+
+          //Avoid sending scope as parameter
+          if (paramString === 'scope') {
+            paramString = 'context';
+          }
+          return paramString;
         });
-        methodObject.push({ name, params });
+        connectorData.push({ methodName, methodParams });
       }
     });
   });
+
+  const dataObject = {
+    connector_name: name,
+    connectorData,
+  };
+
+  generateNewConnectorFromTemplate(newConnectorRoute, dataObject);
 };

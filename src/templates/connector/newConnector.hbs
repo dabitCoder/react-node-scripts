@@ -1,0 +1,27 @@
+import CommonUriConstants from 'redpoints-model-js-common/constants/CommonUriConstants';
+import BaseController from './BaseController';
+import HttpMethods from '../enumeration/HttpMethods';
+import HttpStatus from '../enumeration/HttpStatus';
+import UrlBuilder from '../helper/UrlBuilder';
+
+
+export default class {{connector_name}} extends BaseController {
+{{#each connectorData}}
+static async {{this.methodName}}({{this.methodParams}}) {
+
+
+
+
+return BaseController.restApiCall(
+context,
+todo,
+pathVariables,
+queryParams,
+todo,
+todo,
+todo,
+body
+)
+}
+{{/each}}
+}
