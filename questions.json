@@ -10,14 +10,14 @@
   "naming": [
     {
       "name": "name",
-      "type": "string",
+      "type": "input",
       "message": "Please, provide a name"
     }
   ],
   "component_reducers": [
     {
       "name": "component_reducers",
-      "type": "string",
+      "type": "editor",
       "message": "Route of your reducer"
     }
   ],
@@ -31,7 +31,7 @@
   "component_actions": [
     {
       "name": "component_actions",
-      "type": "string",
+      "type": "editor",
       "message": "Route of your actions"
     }
   ],
@@ -45,7 +45,7 @@
   "connector_method": [
     {
       "name": "connector_method",
-      "type": "string",
+      "type": "input",
       "message": "Method you wanna test"
     }
   ],

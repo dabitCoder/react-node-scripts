@@ -3,30 +3,31 @@ import ReactDOM from 'react-dom';
 {{#if isReduxActive}}
 import { Provider } from 'react-redux';
 {{/if}}
-import { render, cleanup, fireEvent } from 'react-testing-library';
+import { render, cleanup } from 'react-testing-library';
 {{#if isReduxActive}}
 import store from '../../../../store/__mocks__/mockStore';
 
+import { {{{actionsForComponent}}} } from {{{actionsRoute}}}
 
-import {} from '{{component_actions}}';
-import {} from '{{component_reducers}}';
+import { {{{selectorsForComponent}}} } from {{{selectorsRoute}}}
+
 {{/if}}
 
 import {{name}} from '../{{name}}';
 
 {{#if isReduxActive}}
-jest.mock('{{component_actions}}')
-jest.mock('{{component_reducers}}')
+jest.mock({{{actionsRoute}}})
+jest.mock({{{selectorsRoute}}})
 {{/if}}
 
 
 describe('{{name}} test suite', () => {
   {{#if isReduxActive}}
-      const component = (
-        <Provider store={store}>
-          <{{name}}/>
-        </Provider>
-      );
+  const component = (
+    <Provider store={store}>
+      <{{name}}/>
+    </Provider>
+  );
   {{else}}
     const component = <{{name}}/>
   {{/if}}
@@ -34,8 +35,20 @@ describe('{{name}} test suite', () => {
   const setup = () => render(component);
 
   {{#if isReduxActive}}
-    beforeEach(() => {});
-    afterEach(cleanup);
+    beforeEach(() => {
+        {{#each actionsArray}}
+            {{this}}.mockReturnValue({
+                type:'{{{this}}}'
+            })
+        {{/each}}
+        {{#each selectorsArray}}
+            {{this}}.mockReturnValue(null)
+        {{/each}}
+    });
+    afterEach(() => {
+        jest.clearAllMocks();
+        cleanup();
+    });
   {{/if}}
 
 it('Should render correctly', () => {

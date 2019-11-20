@@ -32,12 +32,41 @@ export const promptQuestionsForComponent = async () => {
 };
 
 const askForReduxImports = async (dataObject, isReduxActive) => {
-  const { component_reducers } = await askForReducers();
-  const { component_actions } = await askForActions();
+  let { component_reducers } = await askForReducers();
+  let { component_actions } = await askForActions();
+
+  const selectorsRoute = component_reducers.substring(
+    component_reducers.lastIndexOf('from') + 5,
+    component_reducers.lastIndexOf(';')
+  );
+
+  const actionsRoute = component_actions.substring(
+    component_actions.lastIndexOf('from') + 5,
+    component_actions.lastIndexOf(';')
+  );
+
+  let selectorsForComponent = component_reducers
+    .replace(/(\r\n|\n|\r)/gm, '')
+    .match(/{(.*)}/)
+    .pop();
+
+  let actionsForComponent = component_actions
+    .replace(/(\r\n|\n|\r)/gm, '')
+    .match(/{(.*)}/)
+    .pop();
+
+  const actionsArray = actionsForComponent.replace(/ /g, '').split(',');
+
+  const selectorsArray = selectorsForComponent.replace(/ /g, '').split(',');
+
   return {
     ...dataObject,
-    component_actions,
-    component_reducers,
+    actionsArray,
+    actionsForComponent,
+    actionsRoute,
     isReduxActive,
+    selectorsArray,
+    selectorsForComponent,
+    selectorsRoute,
   };
 };
