@@ -55,7 +55,10 @@ const askForReduxImports = async (dataObject, isReduxActive) => {
     .match(/{(.*)}/)
     .pop();
 
-  const actionsArray = actionsForComponent.replace(/ /g, '').split(',');
+  const actionsArray = actionsForComponent
+    .replace(/ /g, '')
+    .split(',')
+    .slice(0, -1);
 
   const selectorsArray = selectorsForComponent.replace(/ /g, '').split(',');
 
